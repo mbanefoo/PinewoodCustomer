@@ -11,8 +11,8 @@ using PinewoodCustomer.Data.Repositories;
 namespace PinewoodCustomer.Data.Migrations
 {
     [DbContext(typeof(PinewoodDbContext))]
-    [Migration("20240608210504_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20240608234920_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,9 +67,6 @@ namespace PinewoodCustomer.Data.Migrations
                     b.Property<string>("postCode")
                         .HasColumnType("nvarchar(max)")
                         .HasAnnotation("Relational:JsonPropertyName", "postcode");
-
-                    b.Property<string>("title")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 

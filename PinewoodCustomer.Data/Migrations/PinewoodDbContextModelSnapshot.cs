@@ -65,9 +65,6 @@ namespace PinewoodCustomer.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasAnnotation("Relational:JsonPropertyName", "postcode");
 
-                    b.Property<string>("title")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("id");
 
                     b.ToTable("customers");

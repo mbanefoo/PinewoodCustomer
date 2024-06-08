@@ -21,7 +21,6 @@ namespace PinewoodCustomer.Shared.Models
         [EmailAddress]
         public string? email { get; set; } 
         public string? phone { get; set; } 
-        [JsonPropertyName("address")]
         public string? address { get; set; }
         public string? city { get; set; } 
         public string? county { get; set; }
