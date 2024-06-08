@@ -1,0 +1,90 @@
+﻿@page "/customerdetail/{id:int}"
+
+<section class="customer-detail">
+    <h4 class="page-title">Details for @customer.firstName @customer.lastName</h4>
+
+    @{
+        var leadingFormat = "00000";
+    }
+
+    <div class="col-12 row">
+        <div class="col-2">
+        </div>
+        <div class="col-10 row">
+            <div class="col-xs-12 col-sm-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Customer ID</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@customer.id.ToString(leadingFormat)</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">First name</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.firstName</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Last name</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.lastName</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Personal Email</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.email</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Phone Number</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.phone</label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Gender</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.gender</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Address</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.address</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">City/Town</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.city</label>
+                    </div>
+                </div>
+                  <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">County</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.county</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Post Code</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.postCode</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Country</label>
+                    <div class="col-sm-8">
+                        <label type="text" readonly class="form-control-plaintext">@customer.country</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div class="me-auto">
+  <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+</div>

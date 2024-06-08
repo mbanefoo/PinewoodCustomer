@@ -1,0 +1,60 @@
+﻿@page "/"
+@page "/customer"
+<h4>Customers</h4>
+
+<p>@Message</p>
+
+@if (customerList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="col-12">
+
+      <a class="btn btn-primary edit-btn" @onclick="@NavigateToAddView">Add new customer</a>
+    @if(customerList.Count() == 0)
+      {
+          <p class="pt-4"><em>No customer details available</em></p>
+          }
+          else
+          {
+      <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+              @*  <th>Customer ID</th>*@
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in customerList)
+            {
+                <tr>
+                    
+                    <td><i class="fa fa-solid fa-user"></i></td>
+                    @*<td>@customer.id</td>*@
+                    <td>@customer.firstName</td>
+                    <td>@customer.lastName</td>
+                    <td>@customer.email</td>
+                    <td>@customer.phone</td>
+                    <td>
+                        <a href="@($"customerdetail/{@customer.id}")" class="btn btn-primary table-btn">
+                            <i class="fa fas fa-info-circle"></i>
+                        </a>
+                        <a href="@($"customeredit/{@customer.id}")" class="btn btn-primary table-btn">
+                            <i class="fa fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    }
+    </div>
+}
+

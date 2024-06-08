@@ -1,0 +1,94 @@
+﻿ @using PinewoodCustomer.Shared
+@page "/customeredit"
+@page "/customeredit/{id}"
+    
+<section class="customer-edit">
+        @if (!Saved)
+        {
+            <h4 class="page-title">@PageTitle</h4>
+
+            <br>
+            <div class="col-6">
+            <EditForm Model="@customer" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                <div class="form-group row">
+                    <label for="lastName" class="col-sm-12">Last name: </label>
+                    <InputText id="lastName" class="form-control col-sm-8" @bind-Value="@customer.lastName" placeholder="Enter last name" @ref="LastNameInputText"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.lastName)" />
+                </div>
+                <div class="form-group row">
+                    <label for="firstName" class="col-sm-12">First name: </label>
+                    <InputText id="firstName" class="form-control col-sm-8" @bind-Value="@customer.firstName" placeholder="Enter first name"></InputText>
+                    <ValidationMessage For="@(() => customer.firstName)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="gender" class="col-sm-12">Gender: </label>
+                    <InputSelect id="gender" class="form-control col-sm-8" @bind-Value=@customer.gender>
+                          <option value="" selected disabled hidden>Please select gender</option>
+                        <option value="@(Gender.Male)">Male</option>
+                        <option value="@(Gender.Female)">Female</option>
+                        <option value="@(Gender.Other)">Other</option>
+                    </InputSelect>
+                </div>
+                <br>
+                <h5>Contact info</h5>
+                <hr>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-12">Email: </label>
+                    <InputText id="email" class="form-control col-sm-8" @bind-Value="@customer.email" placeholder="Enter email"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.email)" />
+                </div>
+
+                <div class="form-group row">
+                    <label for="phonenumber" class="col-sm-12">Phone number: </label>
+                    <InputText id="phonenumber" class="form-control col-sm-8" @bind-Value="@customer.phone" placeholder="Enter phone number"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.phone)" />
+                </div>
+                <br>
+                <h5>Address info</h5>
+                <hr>
+                <div class="form-group row">
+                    <label for="address" class="col-sm-12">Address: </label>
+                    <InputText id="address" class="form-control col-sm-8" @bind-Value="@customer.address" placeholder="Enter Address"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.address)" />
+                </div>
+                  <div class="form-group row">
+                    <label for="city" class="col-sm-12">City/Town: </label>
+                    <InputText id="address" class="form-control col-sm-8" @bind-Value="@customer.city" placeholder="Enter City/Town"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.city)" />
+                </div>
+                   <div class="form-group row">
+                    <label for="county" class="col-sm-12">County: </label>
+                    <InputText id="country" class="form-control col-sm-8" @bind-Value="@customer.county" placeholder="Enter County"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.county)" />
+                </div>
+                  <div class="form-group row">
+                    <label for="postcode" class="col-sm-12">Post Code: </label>
+                    <InputText id="address" class="form-control col-sm-8" @bind-Value="@customer.postCode" placeholder="Enter Post Code"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.postCode)" />
+                </div>
+                  <div class="form-group row">
+                    <label for="country" class="col-sm-12">Country: </label>
+                    <InputText id="country" class="form-control col-sm-8" @bind-Value="@customer.country" placeholder="Enter Country"></InputText>
+                    <ValidationMessage class="offset-sm-12 col-sm-8" For="@(() => customer.country)" />
+                </div>
+                <div class="d-flex pt-2 gap-2">
+                <button type="submit" class="btn btn-primary edit-btn">Save customer</button>
+                <a class="btn btn-outline-primary edit-outline-btn" @onclick="@NavigateToOverview">Cancel</a>
+                @if (customer.id > 0)
+                {
+                    <a class="btn btn-danger" @onclick="@DeleteCustomer">
+                        Delete
+                    </a>
+                }
+                </div>
+            </EditForm>
+            </div>
+        }
+        else
+        {
+            <div class="alert @StatusClass">@Message</div>
+            <a class="btn btn-outline-primary" @onclick="@NavigateToOverview">Back to overview</a>
+
+        }
+    </section>
