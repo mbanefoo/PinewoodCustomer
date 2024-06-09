@@ -10,6 +10,7 @@ namespace PinewoodCustomer.Data.Repositories
         public CustomerRepository(PinewoodDbContext context)
         {
             _context = context;
+            _context.Database.EnsureCreated();// creates database if it doesn't exist
         }
 
         public async Task<List<Customer>> GetCustomerListAsync()

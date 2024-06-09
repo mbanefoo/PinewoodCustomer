@@ -16,7 +16,6 @@ namespace PinewoodCustomer.Api.Controllers
             _customerRepository = customerRepository;
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetCustomerList()
         {
@@ -60,12 +59,12 @@ namespace PinewoodCustomer.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var customerToUpdate =await _customerRepository.GetCustomerByIdAsync(customer.id);
+            var customerToUpdate = await _customerRepository.GetCustomerByIdAsync(customer.id);
 
             if (customerToUpdate == null)
                 return NotFound();
 
-           await _customerRepository.UpdateCustomerAsync(customer);
+            await _customerRepository.UpdateCustomerAsync(customer);
 
             return NoContent(); //success
         }
@@ -77,7 +76,7 @@ namespace PinewoodCustomer.Api.Controllers
             if (id == 0)
                 return BadRequest();
 
-            var customerToDelete =await _customerRepository.GetCustomerByIdAsync(id);
+            var customerToDelete = await _customerRepository.GetCustomerByIdAsync(id);
             if (customerToDelete == null)
                 return NotFound();
 
