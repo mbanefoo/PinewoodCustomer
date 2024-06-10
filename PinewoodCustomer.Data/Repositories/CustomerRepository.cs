@@ -41,15 +41,12 @@ namespace PinewoodCustomer.Data.Repositories
                 foundCustomer.gender = customer.gender;
                 foundCustomer.email = customer.email;
                 foundCustomer.phone = customer.phone;
-                //foundCustomer.suffix = customer.suffix;
                 foundCustomer.address = customer.address;
                 foundCustomer.city = customer.city;
                 foundCustomer.county =customer.county;
                 foundCustomer.country = customer.country;
                 foundCustomer.postCode=customer.postCode;
                 await _context.SaveChangesAsync();
-
-
                 return foundCustomer;
             }
             return null;
@@ -59,7 +56,6 @@ namespace PinewoodCustomer.Data.Repositories
         {
             var foundCustomer = await _context.customers.FirstOrDefaultAsync(cust => cust.id == id);
             if (foundCustomer == null) return;
-
             _context.customers.Remove(foundCustomer);
             _context.SaveChanges();
         }
